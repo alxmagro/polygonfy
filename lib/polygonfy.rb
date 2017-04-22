@@ -1,5 +1,5 @@
 require "polygonfy/version"
-require "polygonfy/point"
+require "polygonfy/Point"
 require "nokogiri"
 
 module Polygonfy
