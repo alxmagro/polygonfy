@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = "polygonfy"
   spec.version       = Polygonfy::VERSION
   spec.authors       = ["Alexandre Magro"]
-  spec.email         = ["alexandremagro@live.com"]
-
+  spec.email         = ["alx.magro@gmail.com"]
+  spec.homepage      = "https://github.com/alexandremagro/polygonfy"
   spec.summary       = "GDraw an SVG polygon easily from the command line"
   spec.description   = "Draw an SVG polygon easily from the command line"
   spec.license       = "MIT"
