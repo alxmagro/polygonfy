@@ -36,8 +36,8 @@ module Polygonfy
       height - (point.y + MARGIN)
     end
 
-    def to_svg
-      Nokogiri::XML::Builder.new do |xml|
+    def to_xml
+      builder = Nokogiri::XML::Builder.new do |xml|
         xml.svg(xmlns: "http://www.w3.org/2000/svg", width: width, height: height) {
           xml.polygon(style: STYLES[:polygon], points: polygon_area)
           xml.g {
@@ -53,6 +53,8 @@ module Polygonfy
           }
         }
       end
+
+      builder.to_xml
     end
 
   end

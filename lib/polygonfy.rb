@@ -19,7 +19,7 @@ module Polygonfy
     polygon = Polygon.new(points)
 
     File.open(ARGV[0], 'w') do |f|
-      f.write(polygon.to_svg)
+      f.write(polygon.to_xml)
     end
   end
 end
