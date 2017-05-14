@@ -29,22 +29,22 @@ module Polygonfy
 
     points.map! do |p|
       id, x, y = p.split(',')
-      Point.new(id, x.to_i + MARGIN, y.to_i + MARGIN)
+      Point.new(id, x.to_i, y.to_i)
     end
 
     xmlns  = "http://www.w3.org/2000/svg"
-    width  = points.map(&:x).max + MARGIN
-    height = points.map(&:y).max + MARGIN
+    width  = points.map(&:x).max + (2 * MARGIN)
+    height = points.map(&:y).max + (2 * MARGIN)
 
-    polygon_points = points.map { |p| "#{p.x},#{p.y}" }.join(' ')
+    polygon_points = points.map { |p| "#{p.x + MARGIN},#{p.y + MARGIN}" }.join(' ')
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.svg(xmlns: xmlns, width: width, height: height) {
         xml.polygon(style: STYLES[:polygon], points: polygon_points)
         xml.g {
           points.each_with_index do |p, i|
-            xml.circle(style: STYLES[:circle], cx: p.x, cy: p.y, r: "12")
-            xml.text_(x: p.x, y: p.y + 5, 'text-anchor': 'middle') {
+            xml.circle(style: STYLES[:circle], cx: p.x + MARGIN, cy: p.y + MARGIN, r: "12")
+            xml.text_(x: p.x + MARGIN, y: p.y + 5 + MARGIN, 'text-anchor': 'middle') {
               xml.text(p.id)
               xml.title {
                 xml.text(point_title(points, i))
